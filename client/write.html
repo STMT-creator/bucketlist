@@ -21,7 +21,7 @@
             e.preventDefault(); // 전송 후 페이지 새로고침 금지
                 fetch("http://localhost:3000/add", {
                     method: 'post',
-                    header: {
+                    headers: {
                 'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({
