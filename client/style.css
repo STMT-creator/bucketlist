@@ -17,11 +17,18 @@ h2 {
     color: var(--secondary-text-color);
     font-size: 32px;
 }
+.wrapper {
+    width: 55%;
+    margin: 0 auto;
+}
+.list-header {
+    display: flex;
+    justify-content: space-between;
+    margin: 0 0 1rem 0;
+}
 .list {
     background-color: var(--secondary-bg-color);
-    width: 40%;
-    margin: 0 auto;
-    padding: 30px 30px;
+    padding: 30px 30px ;
 }
 .row {
     display: flex;
@@ -69,18 +76,12 @@ h2 {
     transition: 0.2s; /* CSS변화에 시간차 처리 */
   }
   /* input이 체크되면 특수문자 보이게 처리 */
-  #chk1:checked + .circle:after, 
-  #chk2:checked + .circle:after, 
-  #chk3:checked + .circle:after, 
-  #chk4:checked + .circle:after {
+  [id^="chk"]:checked + .circle:after {
     opacity: 1;
   }
-  
+  /* ^(캐럿)은 id가 ~로 시작하는 $(달러)는 아이디가 ~로 끝나는*/
   /* 체크박스는 display:none;을 주면 데이터 처리가 안됨 */
-  #chk1,
-  #chk2,
-  #chk3,
-  #chk4 {
+  [id^="chk"]:checked {
         position: absolute;
         left: -999em;
   }

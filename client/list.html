@@ -11,37 +11,20 @@
 <body>
   <h1 class="text-center">My bucket-list</h1>
   <h2 class="text-center">나의 버킷 리스트</h2>
-  <div class="list">
-    <!-- <div class="row">
-          <label for="chk">
-              <input type="checkbox" checked id="chk1" />
-              <i class="circle"></i>
-              <span class="desc-bg desc-text corner-rounded">운동 꾸준히 하기</span>
-          </label>
-        </div>
-        <div class="row">
-          <label for="chk">
-              <input type="checkbox" checked id="chk2" />
-              <i class="circle"></i>
-              <span class="desc-bg desc-text corner-rounded">
-                커뮤니티로 새로운 사람 사귀기
-              </span>
-                    </div>
-          </label>
-        <div class="row">
-          <label for="chk">
-              <input type="checkbox" id="chk3" />
-              <i class="circle"></i>
-              <span class="desc-bg desc-text corner-rounded">포토 에세이 출간하기</span>
-          </label>
-        </div> -->
+  <div class="wrapper">
+    <div class="list-header">
+      <span>전체 <span id="count">0</span>건</span>
+      <button id="write">등록하기</button>
+    </div>
+    <div class="list"></div>
   </div>
   <script>
     window.addEventListener("DOMContentLoaded", async () => {
       const container = document.querySelector(".list");
       const response = await fetch("http://localhost:3000/all");
       const jsonData = await response.json();
-      //console.log(jsonData);
+      const counter = document.querySelector("#count");
+      counter.innerHTML = jsonData.length;
       container.innerHTML = jsonData.map(bucket => `<div class="row">
           <label for="chk">
               <input type="checkbox" checked id="chk${bucket.id}" />
@@ -50,7 +33,13 @@
           </label>
         </div>`)
         .join("");
-    })
+        // const 상수 지정 해주고 그 상수가 어떤 id를 가르치는지 id 설정 후
+        // 상수에 대한 이벤트 발생시 기능을 추가한다.
+        const writeBtn = document.querySelector("#write");
+        writeBtn.addEventListener("click", function(){
+          location.href = "/client/write.html"
+        })
+    });
   </script>
 </body>
 

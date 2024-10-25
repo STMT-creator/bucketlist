@@ -16,19 +16,36 @@
         </form>
       </div><!-- /.list-->
       <script>
-        const writeform = document.querySelector("#write-form");
-        writeform.addEventListener("submit", function(e){
-            e.preventDefault(); // 전송 후 페이지 새로고침 금지
-                fetch("http://localhost:3000/add", {
-                    method: 'post',
-                    headers: {
-                'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                text: document.querySelector("#input_text").value
-                })
+        window.addEventListener("DOMContentLoaded", () => {
+            const writeform = document.querySelector("#write-form");
+            writeform.addEventListener("submit", async function(e){
+                e.preventDefault(); // 전송 후 페이지 새로고침 금지
+                    let response = await fetch("http://localhost:3000/add", {
+                        method: 'post',
+                        headers: {
+                        'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                        text: document.querySelector("#input_text").value
+                        }), 
+                    });
+                const result = response.json();
+                clearinput();
+                // JSON 객채
+                // 1).stringify : OBJECT를 JSON으로 변환
+                // 2).parse : JSON을 OBJECT로 변환
+                console.log(result);
             });
-        })
+        });
+        function clearinput() {
+            let choice = confirm("버킷리스트 목록 화면으로 이동하시겠습니까?");
+            if (choice) {
+                location.href = "/client/list.html"
+            } else {
+                document.querySelector("#input_text").value = ""; // 빈값
+                document.querySelector("#input_text").focus(); // 포커스 생성
+            }
+        }
       </script>
     </body>
 </html>
