@@ -5,6 +5,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>나만의 버킷 리스트</title>
+  <link rel="shortcut icon" href="favicon.png" type="image/x-icon">
   <link rel="stylesheet" href="style.css">
 </head>
 
@@ -31,6 +32,7 @@
               <input type="checkbox" ${bucket.isDone ? "checked":" "} id="chk${bucket.id}" />
               <i class="circle"></i>
               <span class="desc-bg desc-text corner-rounded">${bucket.text}</span>
+              <button class="remove"><img src="trash.png" alt="삭제"></span>
           </label>
         </div>`)
         .join("");
@@ -39,6 +41,16 @@
         const writeBtn = document.querySelector("#write");
         writeBtn.addEventListener("click", function(){
           location.href = "/client/write.html"
+        })
+        const removeBtns = document.querySelectorAll(".remove");
+        removeBtns.forEach((removeBtn, i) => {
+          removeBtn.addEventListener("click", async () => {
+            const response = await fetch("http://localhost:3000/remove/"+i, {
+              method: "delete"
+            })
+            console.log(response.json()); //서버 응답 데이터 확인
+            location.reload(); //화면 새로고침
+          })
         })
     });
   </script>

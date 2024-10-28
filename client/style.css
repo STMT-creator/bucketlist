@@ -31,8 +31,9 @@ h2 {
     padding: 30px 30px ;
 }
 .row {
-    display: flex;
-    align-items: center;
+    /* display: flex;
+    align-items: center; */
+    margin: 0 0 .5rem 0
 }
 .row p {
     flex: 1;
@@ -46,9 +47,11 @@ h2 {
 }
 .desc-bg {
     background-color: var(--primary-bg-color);
+    flex:1
 }
 .desc-text {
     color: var(--secondary-text-color);
+    text-indent: 1rem
 }
 .corner-rounded {
     border-radius: 25px;
@@ -85,3 +88,17 @@ h2 {
         position: absolute;
         left: -999em;
   }
+  [for="chk"] {
+    display: flex;
+    gap: .5rem
+  }
+.remove {
+    border-radius: 50%;
+    height: 2.2rem;
+    width: 2.5rem
+  }
+.remove img {
+    position : relative;
+    top: 2px;
+    left: 0px
+}
