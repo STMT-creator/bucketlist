@@ -2,7 +2,7 @@ const express = require('express')
 const app = express()
 const dotenv = require("dotenv");
 dotenv.config();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 80; // or 둘중 하나 논리 연산자
 const cors = require('cors');
 
 // in-memory : 메모리(=휘발성)에 저장할 버킷리스트 목록
