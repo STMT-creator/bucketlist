@@ -1,8 +1,8 @@
 const express = require('express')
 const app = express()
-const dotenv = require("dotenv");
-dotenv.config();
-const port = process.env.PORT || 80; // or 둘중 하나 논리 연산자
+// const dotenv = require("dotenv");
+// dotenv.config();
+const port = process.env.PORT || 5001; // or 둘중 하나 논리 연산자
 const cors = require('cors');
 
 // in-memory : 메모리(=휘발성)에 저장할 버킷리스트 목록
@@ -23,6 +23,9 @@ let buckets=[
 app.use(cors());
 app.use(express.json()); // json pasring
 app.use(express.urlencoded({extended: false}));
+app.use(cors({
+  origin: 'https://my-buckets.netlify.app', credentials: true
+}));
 
 app.get('/all', (req, res) => { // 버킷리스트를 수신
   res.json(buckets);
