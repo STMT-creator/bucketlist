@@ -20,7 +20,7 @@
             const writeform = document.querySelector("#write-form");
             writeform.addEventListener("submit", async function(e){
                 e.preventDefault(); // 전송 후 페이지 새로고침 금지
-                    let response = await fetch("http://localhost:3000/add", {
+                    let response = await fetch("https://git.heroku.com/glacial-falls-85631.git", {
                         method: 'post',
                         headers: {
                         'Content-Type': 'application/json'
