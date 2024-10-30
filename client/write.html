@@ -20,7 +20,7 @@
             const writeform = document.querySelector("#write-form");
             writeform.addEventListener("submit", async function(e){
                 e.preventDefault(); // 전송 후 페이지 새로고침 금지
-                    let response = await fetch("https://glacial-falls-85631-3b7c2fe51e4d.herokuapp.com/all", {
+                    let response = await fetch("https://lit-cliffs-58884-2e825310ef6b.herokuapp.com/", {
                         method: 'post',
                         headers: {
                         'Content-Type': 'application/json'
