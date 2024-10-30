@@ -20,11 +20,11 @@ let buckets=[
   },
 ]; //배열 (값을 여러개 저장)
 
-app.use(cors());
+//app.use(cors());
 app.use(express.json()); // json pasring
 app.use(express.urlencoded({extended: false}));
 app.use(cors({
-  origin: 'https://my-buckets.netlify.app', credentials: true
+  origin: 'https://bucklist-stmt.netlify.app', credentials: true
 }));
 
 app.get('/all', (req, res) => { // 버킷리스트를 수신
