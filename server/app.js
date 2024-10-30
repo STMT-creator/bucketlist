@@ -24,7 +24,7 @@ let buckets=[
 app.use(express.json()); // json pasring
 app.use(express.urlencoded({extended: false}));
 app.use(cors({
-  origin: 'https://bucklist-stmt.netlify.app', credentials: true
+  origin: 'https://bucketlist-stmt.netlify.app', credentials: true
 }));
 
 app.get('/all', (req, res) => { // 버킷리스트를 수신
